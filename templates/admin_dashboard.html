@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Admin Dashboard</h2>
+<table class="table table-bordered">
+  <tr><th>User</th><th>Hall</th><th>Date</th><th>Time Slot</th><th>Status</th><th>Action</th></tr>
+  {% for b in bookings %}
+  <tr>
+    <td>{{ b['name'] }}</td>
+    <td>{{ b['hall_name'] }}</td>
+    <td>{{ b['date'] }}</td>
+    <td>{{ b['time_slot'] }}</td>
+    <td>{{ b['status'] }}</td>
+    <td>
+      <a href="{{ url_for('update_status', booking_id=b['id'], status='Approved') }}" class="btn btn-success btn-sm">Approve</a>
+      <a href="{{ url_for('update_status', booking_id=b['id'], status='Rejected') }}" class="btn btn-danger btn-sm">Reject</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

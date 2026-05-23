@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>User Dashboard</h2>
+<a href="{{ url_for('book') }}" class="btn btn-primary mb-3">Book a Hall</a>
+<table class="table table-bordered">
+  <tr><th>Hall</th><th>Date</th><th>Time Slot</th><th>Status</th></tr>
+  {% for b in bookings %}
+  <tr>
+    <td>{{ b['hall_name'] }}</td>
+    <td>{{ b['date'] }}</td>
+    <td>{{ b['time_slot'] }}</td>
+    <td>{{ b['status'] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
